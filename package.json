@@ -1,0 +1,57 @@
+{
+  "name": "openai-mcp-todo-boilerplate",
+  "version": "1.0.0",
+  "description": "A clean boilerplate for building ChatGPT Apps with MCP, Express, and React - To-Do List Example",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "dev": "concurrently \"pnpm run dev:server\" \"pnpm run dev:widgets\"",
+    "dev:server": "tsc && concurrently \"tsc --watch\" \"nodemon --watch build --delay 2 build/index.js\"",
+    "dev:widgets": "vite",
+    "build": "pnpm run build:server && pnpm run build:widgets",
+    "build:server": "tsc && shx chmod +x build/index.js",
+    "build:widgets": "vite build",
+    "start": "node build/index.js",
+    "prepare": "pnpm run build"
+  },
+  "keywords": [
+    "openai",
+    "mcp",
+    "chatgpt",
+    "express",
+    "react",
+    "todo"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.22.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "framer-motion": "^12.23.24",
+    "lucide-react": "^0.554.0",
+    "react-datepicker": "^8.9.0",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.10.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.22",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.1.9",
+    "postcss": "^8.5.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "shx": "^0.3.4",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.5"
+  },
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+}
