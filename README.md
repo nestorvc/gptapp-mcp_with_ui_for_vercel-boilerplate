@@ -267,9 +267,10 @@ After deploying, you **must** manually set the Framework Preset to **Express** i
 In the Vercel dashboard:
 1. Go to your project settings
 2. Navigate to Environment Variables
-3. Add `BASE_URL` with your Vercel deployment URL:
+3. Add `BASE_URL` and `CONNECT_DOMAIN` with your Vercel deployment URL:
    ```
    BASE_URL=https://your-project.vercel.app
+   CONNECT_DOMAIN=https://your-project.vercel.app
    ```
 
 ### 4. Configure ChatGPT
@@ -400,6 +401,21 @@ The server includes CORS middleware. If you encounter CORS issues:
 - Always use your tunnel URL (ngrok/Cloudflare Tunnel) in `BASE_URL` when testing with ChatGPT
 - Example: `BASE_URL=https://abc123.ngrok-free.app` ✅
 - Not: `BASE_URL=http://localhost:8000` ❌
+
+### Vercel 404
+If using vercel.json in your  project, remove it.
+This is an Express app, we dont need that if you manually changed the Framework Preset to Express.
+
+**Framework Preset Configuration**
+
+After deploying, you **must** manually set the Framework Preset to **Express** in your Vercel project settings:
+
+1. Go to your project in the Vercel dashboard
+2. Navigate to **Settings** > **General** > **Framework Preset**
+3. Select **Express** from the dropdown
+4. Save the changes
+
+**Why?** This project has a `vite.config.js` file in the root directory, which causes Vercel to incorrectly auto-detect it as VitePress. However, this is actually an Express application. Setting the Framework Preset to Express ensures Vercel uses the correct build and runtime configuration.
 
 ## License
 
