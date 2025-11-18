@@ -66,7 +66,6 @@ openai-mcp-todo-boilerplate/
 ├── package.json
 ├── tsconfig.json
 ├── vite.config.js
-├── vercel.json              # Vercel deployment config
 └── README.md
 ```
 
@@ -251,6 +250,17 @@ vercel
 ```
 
 Follow the prompts to link your project.
+
+**IMPORTANT: Framework Preset Configuration**
+
+After deploying, you **must** manually set the Framework Preset to **Express** in your Vercel project settings:
+
+1. Go to your project in the Vercel dashboard
+2. Navigate to **Settings** > **General** > **Framework Preset**
+3. Select **Express** from the dropdown
+4. Save the changes
+
+**Why?** This project has a `vite.config.js` file in the root directory, which causes Vercel to incorrectly auto-detect it as VitePress. However, this is actually an Express application. Setting the Framework Preset to Express ensures Vercel uses the correct build and runtime configuration.
 
 ### 3. Set Environment Variables
 
